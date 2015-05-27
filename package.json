@@ -41,6 +41,7 @@
     "exposify": "^0.4.0",
     "flyd-every": "0.0.1",
     "flyd-filter": "^1.0.2",
+    "flyd-scanmerge": "0.0.3",
     "keymaster": "^1.6.2",
     "mocha": "^2.2.4",
     "open": "0.0.5",

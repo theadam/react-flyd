@@ -8,7 +8,11 @@ export default class Snake extends Component {
   render(){
   return (
     <g>
-      {this.props.body.map((pos, i) => <BodyUnit x={pos.x} y={pos.y} width={this.props.unitWidth} height={this.props.unitHeight} key={i}/>, this)}
+      {
+        this.props.body.map((pos, i) => {
+          return <BodyUnit x={pos.x} y={pos.y} width={this.props.unitWidth} height={this.props.unitHeight} key={i} />;
+        }, this)
+      }
     </g>);
   }
 }

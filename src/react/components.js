@@ -1,6 +1,7 @@
 import React from 'react';
 import R from 'ramda';
 import flydObj from 'flyd-obj';
+import flyd from 'flyd';
 
 import {projectAll} from './utils';
 
@@ -36,12 +37,11 @@ export const attach = R.curryN(2, function(streams, ReactClass){
   return contextifyStreams(React.createClass({
 
     componentWillMount(){
-      var stream = flydObj.stream(projectAll(this.props.streams, streams));
+      var stream = flyd.immediate(flydObj.stream(projectAll(this.props.streams, streams))).map((v) => this.setState(v));
       this.toEnd = [stream];
-      stream.map((v) => this.setState(v));
     },
 
-    componentDidUnmount(){
+    componentWillUnmount(){
       this.toEnd.forEach((s) => s.end(true));
     },
 

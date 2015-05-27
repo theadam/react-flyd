@@ -12,6 +12,6 @@ export default class BodyUnit extends Component {
       height={this.props.width}
       x={this.props.x * this.props.width}
       y={this.props.y * this.props.height}
-      style={this.style} rx={5} ry={5}/>;
+      style={this.style} rx={this.props.width / 4} ry={this.props.height / 4}/>;
   }
 }

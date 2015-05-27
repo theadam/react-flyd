@@ -16,5 +16,7 @@ export const project = R.curryN(2, function(from, path){
 });
 
 export const projectAll = R.curryN(2, function(from, paths){
-  return R.transduce(R.map(projectOnto(from)), R.flip(R.call), {}, arrayify(paths));
+  return R.is(Function, paths) ?
+          paths(from)
+        : R.transduce(R.map(projectOnto(from)), R.flip(R.call), {}, arrayify(paths));
 });

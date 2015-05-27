@@ -63,6 +63,15 @@ describe('react utils', () => {
 
       expect(projectAll).withArgs(streams, descriptors).to.throwError();
     });
+
+    it('should accept a function used to map paths', () => {
+      let descriptors = (from) => ({test: from.a.b.c});
+
+      let result = projectAll(streams, descriptors);
+
+      expect(result.test).to.be(1);
+
+    });
   });
 
 });
