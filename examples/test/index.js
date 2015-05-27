@@ -9,7 +9,7 @@ function render(){
   let height = window.innerHeight - 200;
   let min = Math.max(Math.min(width, height), 400);
   console.log(width, height);
-  React.render(<App streams={streams} cellWidth={min / 20} cellHeight={min / 20} />, document.body);
+  React.render(<App streams={streams} cellWidth={min / 20} cellHeight={min / 20} />, document.getElementById('content'));
 }
 
 window.addEventListener('resize', render);

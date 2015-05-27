@@ -16,22 +16,24 @@ import {attach, pass} from '../../../src';
 export default class App extends Component{
 
   render(){
+    let fullWidth = this.props.width * this.props.cellWidth;
+    let fullHeight = this.props.height * this.props.cellHeight;
     return (
-      <div style={{width: this.props.width * this.props.cellWidth}}>
+      <div style={{width: fullWidth, marginLeft: window.innerWidth / 2 - fullWidth / 2}}>
         <Title>SNAKE!</Title>
-        <svg height={this.props.height * this.props.cellHeight} width={this.props.width * this.props.cellWidth}>
+        <svg height={fullHeight} width={fullWidth}>
           <g>
             <Grid {...this.props}/>
             <Snake unitWidth={this.props.cellWidth} unitHeight={this.props.cellHeight} />
             <Apple width={this.props.cellWidth} height={this.props.cellHeight} />
             {this.props.isPaused ?
-                <PauseScreen height={this.props.height * this.props.cellHeight} width={this.props.width * this.props.cellWidth} />
+                <PauseScreen height={fullHeight} width={fullWidth} />
               : null}
             {this.props.isAtStart ?
-                <StartScreen height={this.props.height * this.props.cellHeight} width={this.props.width * this.props.cellWidth} />
+                <StartScreen height={fullHeight} width={fullWidth} />
               : null}
             {this.props.isAtEnd ?
-                <EndScreen height={this.props.height * this.props.cellHeight} width={this.props.width * this.props.cellWidth} />
+                <EndScreen height={fullHeight} width={fullWidth} />
               : null}
           </g>
         </svg>
