@@ -7,12 +7,8 @@ function projectOntoInternal(from, path, to){
   return R.assocPath(path, R.path(path, from), to);
 }
 
-export const projectOnto = R.curryN(3, function(from, path, to){
+const projectOnto = R.curryN(3, function(from, path, to){
   return projectOntoInternal(from, eitherPath(path), to);
-});
-
-export const project = R.curryN(2, function(from, path){
-  return projectOnto(from, path, {});
 });
 
 export const projectAll = R.curryN(2, function(from, paths){
