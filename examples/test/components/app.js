@@ -16,7 +16,7 @@ import {attach, pass} from '../../../src';
 export default class App extends Component{
 
   render(){
-    let fullWidth = this.props.width * this.props.cellWidth;
+    let fullWidth = this.props.width * this.props.cellWidth + 2;
     let fullHeight = this.props.height * this.props.cellHeight;
     return (
       <div style={{width: fullWidth, marginLeft: window.innerWidth / 2 - fullWidth / 2}}>
