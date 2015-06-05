@@ -36,13 +36,17 @@ export function contextifyStreams(ReactClass){
 export const attach = R.curryN(2, function(streams, ReactClass){
   return contextifyStreams(React.createClass({
 
-    componentWillMount(){
-      var stream = flyd.immediate(flydObj.stream(projectAll(this.props.streams, streams))).map((v) => this.setState(v));
-      this.toEnd = [stream];
+    getInitialState(){
+      this.stream = flyd.immediate(flydObj.stream(projectAll(this.props.streams, streams)));
+      return this.stream();
+    },
+
+    componentDidMount(){
+      this.stream.map(v => this.setState(v));
     },
 
     componentWillUnmount(){
-      this.toEnd.forEach((s) => s.end(true));
+      this.stream.end(true);
     },
 
     render(){
@@ -54,8 +58,8 @@ export const attach = R.curryN(2, function(streams, ReactClass){
 export const pass = R.curryN(2, function(streams, ReactClass){
   return contextifyStreams(React.createClass({
 
-    componentWillMount(){
-      this.setState(projectAll(this.props.streams, streams));
+    getInitialState(){
+      return projectAll(this.props.streams, streams);
     },
 
     render(){
