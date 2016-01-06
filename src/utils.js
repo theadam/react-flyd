@@ -1,10 +1,13 @@
+import { isStream } from 'flyd';
 
-export function throws(message){
-  return () => {
-    throw new Error(message || 'There was an error');
-  };
-}
+const isPlainObject = (obj) => typeof obj === 'object' && obj.constructor === Object;
 
-export function arrayify(possibleArray){
-  return Array.isArray(possibleArray) ? possibleArray : [possibleArray];
+export function hasStream(obj){
+  return Object.keys(obj || {}).reduce((hasOne, key) => {
+    if(hasOne) return hasOne;
+    const val = obj[key];
+    if(isStream(val)) return true;
+    if(isPlainObject(val)) return hasStream(val);
+    return hasOne;
+  }, false);
 }

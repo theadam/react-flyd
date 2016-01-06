@@ -1,1 +1,1 @@
-export * from './react/components';
+export { h } from './hyperscript';

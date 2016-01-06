@@ -1,0 +1,27 @@
+{
+  "name": "react-flyd-counter-example",
+  "version": "1.0.0",
+  "description": "A counter using react-flyd",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theadam/react-flyd.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.6.18",
+    "babel-loader": "^5.1.4",
+    "node-libs-browser": "^0.5.2",
+    "react-hot-loader": "^1.2.7",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "dependencies": {
+    "flyd": "^0.2.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  }
+}
