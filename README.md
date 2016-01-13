@@ -29,8 +29,8 @@ function Counter() {
   return (
     <div>
       <div>
-        <button id="plus" onClick={ (e) => plus$(e) }>+</button>
-        <button id="minus" onClick={ (e) => minus$(e) }>-</button>
+        <button id="plus" onClick={ stream(plus$) }>+</button>
+        <button id="minus" onClick={ stream(minus$) }>-</button>
       </div>
       <div>
         Count: { count$ }
