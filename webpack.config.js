@@ -2,6 +2,20 @@
 
 var webpack = require('webpack');
 
+var reactExternal = {
+  root: 'React',
+  commonjs2: 'react',
+  commonjs: 'react',
+  amd: 'react'
+};
+
+var flydExternal = {
+  root: 'flyd',
+  commonjs2: 'flyd',
+  commonjs: 'flyd',
+  amd: 'flyd'
+};
+
 var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
@@ -29,8 +43,12 @@ module.exports = {
     }]
   },
   output: {
-    library: 'react-flyd',
+    library: 'reactFlyd',
     libraryTarget: 'umd'
+  },
+  externals: {
+    react: reactExternal,
+    flyd: flydExternal
   },
   plugins: plugins,
   resolve: {
