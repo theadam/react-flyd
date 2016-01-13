@@ -11,7 +11,8 @@
     "test": "NODE_ENV=test mocha",
     "test:watch": "NODE_ENV=test mocha --watch",
     "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha",
-    "prepublish": "npm run lint && npm run test && npm run clean && npm run build && npm run build:umd"
+    "prepublish": "npm run lint && npm run test && npm run clean && npm run build && npm run build:umd",
+    "build-examples": "npm run build:umd; for i in `ls examples`; do pushd examples/$i; webpack; popd; done"
   },
   "repository": {
     "type": "git",
