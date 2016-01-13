@@ -1,1 +1,2 @@
-export { h } from './hyperscript';
+import { h } from './hyperscript';
+export { h };
