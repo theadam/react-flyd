@@ -797,7 +797,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key: 'unsubscribe',
 	      value: function unsubscribe() {
 	        this.subscriptions.forEach(function (subscription) {
-	          return subscription.dispose();
+	          return subscription.end();
 	        });
 	        this.subscriptions = null;
 	      }
