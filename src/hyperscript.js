@@ -6,9 +6,8 @@ import { hasStream, toStreams } from './utils';
 
 function wrapChildren(children) {
   const notValidElement$s = children.filter(child => isStream(child) && !isValidElement(child()));
-  let wrappedChildren;
   if (notValidElement$s.length > 0) {
-    wrappedChildren = [combine(() => {
+    return [combine(() => {
       return children.map(child => {
         let element;
         if (!isStream(child)) {
@@ -21,18 +20,16 @@ function wrapChildren(children) {
         return element;
       });
     }, notValidElement$s)];
-  } else {
-    wrappedChildren = children.map(child => {
-      let element;
-      if (!isStream(child)) {
-        element = child;
-      } else {
-        element = createElement(reactive(), {}, child);
-      }
-      return element;
-    });
   }
-  return wrappedChildren;
+  return children.map(child => {
+    let element;
+    if (!isStream(child)) {
+      element = child;
+    } else {
+      element = createElement(reactive(), {}, child);
+    }
+    return element;
+  });
 }
 
 export function h(tag, props, ...children) {
@@ -41,5 +38,5 @@ export function h(tag, props, ...children) {
   if (hasStream(defaultProps) || defaultProps && isStream(defaultProps.mount) || hasStream(wrappedChildren)) {
     return createElement(reactive(tag), toStreams(defaultProps), ...wrappedChildren);
   }
-  return createElement(tag, defaultProps, ...children);
+  return createElement(tag, defaultProps, ...wrappedChildren);
 }
