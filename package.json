@@ -32,10 +32,6 @@
     "url": "https://github.com/theadam/react-flyd/issues"
   },
   "homepage": "https://github.com/theadam/react-flyd",
-  "peerDependencies": {
-    "react": ">=0.13.0",
-    "flyd": ">=0.1.14"
-  },
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
@@ -49,14 +45,16 @@
     "eslint-plugin-import": "^1.11.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-react": "^5.2.2",
-    "flyd": "^0.2.2",
     "mocha": "^2.5.3",
-    "react": "^15.2.1",
     "rimraf": "^2.5.3",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "react-flyd-class": "0.0.3"
+    "react-flyd-class": "0.1.1"
+  },
+  "peerDependencies": {
+    "flyd": "^0.2.2",
+    "react": "^15.2.1"
   }
 }

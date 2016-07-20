@@ -1,24 +1,16 @@
-import { isStream } from 'flyd';
 import { createElement } from 'react';
 import { reactive } from 'react-flyd-class';
+import { hasStream as arrayHasStream } from 'react-flyd-class/lib/utils';
 
 import { hasStream, toStreams } from './utils';
 
-function wrapChildren(children) {
-  return children.map(child => {
-    if (!isStream(child)) return child;
-    return createElement(reactive('span'), {}, child);
-  });
-}
-
-
 export function h(tag, props, ...children) {
-  if (hasStream(props) || props && isStream(props.mount)) {
+  if (hasStream(props) || arrayHasStream(children)) {
     return createElement(
       reactive(tag),
-      toStreams(props),
-      ...(children.length === 1 ? children : wrapChildren(children))
+      toStreams(props || {}),
+      ...children,
     );
   }
-  return createElement(tag, props, ...wrapChildren(children));
+  return createElement(tag, props, ...children);
 }
