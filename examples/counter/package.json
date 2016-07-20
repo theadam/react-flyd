@@ -4,7 +4,7 @@
   "description": "A counter using react-flyd",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -12,16 +12,29 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^5.6.18",
-    "babel-loader": "^5.1.4",
-    "node-libs-browser": "^0.5.2",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.11.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^5.2.2",
+    "flyd": "^0.2.2",
+    "mocha": "^2.5.3",
+    "react": "^15.2.1",
     "react-hot-loader": "^1.2.7",
-    "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0"
+    "rimraf": "^2.5.3",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "flyd": "^0.2.0",
-    "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "flyd": "^0.2.2",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
   }
 }

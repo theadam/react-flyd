@@ -1,8 +1,6 @@
-/* eslint-disable */
-
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import config from './webpack.config';
 
 config.entry.push('webpack-dev-server/client?http://localhost:3000');
 config.entry.push('webpack/hot/only-dev-server');
@@ -14,12 +12,14 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,
   stats: {
-    colors: true
-  }
-}).listen(3000, 'localhost', function(err) {
+    colors: true,
+  },
+}).listen(3000, 'localhost', err => {
   if (err) {
+    // eslint-disable-next-line no-console
     console.log(err);
   }
 
+  // eslint-disable-next-line no-console
   console.log('Listening at localhost:3000');
 });
