@@ -1,7 +1,9 @@
 import { isStream } from 'flyd';
 import { stream as objStream } from 'flyd/module/obj';
 
-const isPlainObject = (obj) => obj !== null && typeof obj === 'object' && Object.getPrototypeOf(obj) === Object.prototype;
+const isPlainObject = (obj) => obj !== null &&
+  typeof obj === 'object' &&
+  Object.getPrototypeOf(obj) === Object.prototype;
 
 export function hasStream(obj) {
   return Object.keys(obj || {}).reduce((hasOne, key) => {
@@ -18,5 +20,5 @@ function wrap(obj) {
 }
 
 export function toStreams(props) {
-  return Object.keys(props).reduce((acc, key) => ({...acc, [key]: wrap(props[key])}), {});
+  return Object.keys(props).reduce((acc, key) => ({ ...acc, [key]: wrap(props[key]) }), {});
 }
