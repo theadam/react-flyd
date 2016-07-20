@@ -1,9 +1,16 @@
 /** @jsx h */
-
 import { render } from 'react-dom';
 import { h } from 'react-flyd';
-import { stream, scan, merge} from 'flyd';
+import { stream, scan, merge } from 'flyd';
 
+function getArray(length) {
+  const list = [];
+  if (length <= 0) return list;
+  for (let i = 0; i < length; i++) {
+    list.push(`Item ${i}`);
+  }
+  return list;
+}
 
 function Counter() {
   const plus$ = stream();
@@ -19,12 +26,18 @@ function Counter() {
   return (
     <div>
       <div>
-        <button id="minus" onClick={ stream(minus$) }>-</button>
-        <button id="plus" onClick={ stream(plus$) }>+</button>
+        <button id="minus" onClick={stream(minus$)}>-</button>
+        <button id="plus" onClick={stream(plus$)}>+</button>
       </div>
       <div>
-        Count: { count$ }
+        Count: {count$}
       </div>
+      <ul>
+        {count$.map(getArray).map(list => list.map(item =>
+          <li>{item}</li>
+        ))}
+        <li>Item is always here</li>
+      </ul>
     </div>
   );
 }
