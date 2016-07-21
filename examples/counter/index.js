@@ -1,4 +1,5 @@
 /** @jsx h */
+import { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 import { h } from 'react-flyd';
 import { stream, scan, merge } from 'flyd';
@@ -11,6 +12,29 @@ function getArray(length) {
   }
   return list;
 }
+
+class Test extends Component {
+  state = {
+    show: true,
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ show: !this.state.show })}>Click</button>
+        {this.state.show ? (
+          <div>
+            {this.props.count$.map(n => <span>{n}</span>)}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
+}
+
+Test.propTypes = {
+  count$: PropTypes.func.isRequired,
+};
 
 function Counter() {
   const plus$ = stream();
@@ -27,7 +51,7 @@ function Counter() {
     <div>
       <div>
         <button id="minus" onClick={stream(minus$)}>-</button>
-        <button id="plus" onClick={stream(plus$)}>+</button>
+        <button mount={count$.map(c => c < 10)} id="plus" onClick={stream(plus$)}>+</button>
       </div>
       <div>
         Count: {count$}
@@ -36,8 +60,13 @@ function Counter() {
         {count$.map(getArray).map(list => list.map(item =>
           <li>{item}</li>
         ))}
-        <li>Item is always here</li>
+        <li
+          style={{ color: count$.map(x => (x % 2 === 0 ? 'red' : 'blue')) }}
+        >
+          Item is always here
+        </li>
       </ul>
+      <Test count$={stream(count$)} />
     </div>
   );
 }
