@@ -5,7 +5,7 @@ Allows for flyd streams to be embedded directly into JSX, and to update content 
 
 # Counter Example
 
-You can compare this example to [Counter example of Cycle.js](https://github.com/cyclejs/cycle-examples/blob/master/counter/src/main.js), [Counter example of Yolk](https://github.com/yolkjs/yolk#example), and [Counter example of React Reactive Class](https://github.com/jas-chen/react-reactive-class#counter-example).
+You can compare this example to [Counter example of Cycle.js](https://github.com/cyclejs/cyclejs/blob/master/examples/basic/counter/src/main.js), [Counter example of Yolk](https://github.com/yolkjs/yolk#example), and [Counter example of React Reactive Class](https://github.com/jas-chen/react-reactive-class#counter-example).
 
 ```javascript
 /** @jsx h */
